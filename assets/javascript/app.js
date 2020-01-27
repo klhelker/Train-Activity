@@ -19,7 +19,7 @@ var firebaseConfig = {
     // Grabs user input
     var trainName = $("#train-name-input").val().trim();
     var destination = $("#destination-input").val().trim();
-    var trainStart = moment($("#time-input").val().trim(), "HH:mm").format("X");
+    var trainStart = moment($("#time-input").val().trim(),"hh").format('LT');
     var frequency = $("#frequency-input").val().trim(); 
     // Creates local "temporary" object for holding train info
     var newTrain = {
@@ -65,7 +65,7 @@ var firebaseConfig = {
   
     var tFrequency = frequency;
 
-    // Time is 3:30 AM
+    // set firstTime to train start input//
     var firstTime = trainStart;
 
     // First Time (pushed back 1 year to make sure it comes before current time)
@@ -89,7 +89,7 @@ var firebaseConfig = {
     console.log("MINUTES TILL TRAIN: " + minAway);
 
     // Next Train
-    var nextTrain = moment().add(minAway, "minutes");
+    var nextTrain = moment().add(minAway, "minutes").format("hh:mm");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
     
